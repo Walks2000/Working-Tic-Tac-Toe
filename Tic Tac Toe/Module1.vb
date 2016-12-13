@@ -131,6 +131,7 @@
             Reset()
         End If
         Dim xInputGrid As String = xInput
+
         If xInput > 8 Or xInput < 0 Then
             Dim xInputValid As Boolean = False
             While xInputValid = False
