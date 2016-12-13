@@ -16,6 +16,8 @@
         Grid(6) = "6"
         Grid(7) = "7"
         Grid(8) = "8"
+        yWinner = False
+        xWinner = False
         Console.Title = "Noughts and Crosses" : Console.ForegroundColor = ConsoleColor.Green
         Console.WriteLine("Welcome to Noughts and Crosses!")
         Console.WriteLine("Before we begin, would you like a quick tutorial to understand ")
@@ -92,7 +94,6 @@
             Turns = Turns + 1
             If i Mod 2 = 1 Then
                 Console.WriteLine("It is your turn, {0}.", Players(0))
-                Console.ReadLine()
                 Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
                 If Players(0) = "X" Then
                     xInputValid()
@@ -103,7 +104,6 @@
 
             If i Mod 2 = 0 Then
                 Console.WriteLine("It is your turn, {0}.", Players(1))
-                Console.ReadLine()
                 Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
                 If Players(1) = "X" Then
                     xInputValid()
@@ -240,6 +240,8 @@
         Grid(6) = "6"
         Grid(7) = "7"
         Grid(8) = "8"
+        yWinner = False
+        xWinner = False
         Game()
     End Sub
 End Module
