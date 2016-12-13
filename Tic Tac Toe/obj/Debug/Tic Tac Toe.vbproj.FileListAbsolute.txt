@@ -7,3 +7,12 @@ c:\users\neil\documents\visual studio 2012\Projects\Tic Tac Toe\Tic Tac Toe\obj\
 c:\users\neil\documents\visual studio 2012\Projects\Tic Tac Toe\Tic Tac Toe\obj\Debug\Tic Tac Toe.exe
 c:\users\neil\documents\visual studio 2012\Projects\Tic Tac Toe\Tic Tac Toe\obj\Debug\Tic Tac Toe.xml
 c:\users\neil\documents\visual studio 2012\Projects\Tic Tac Toe\Tic Tac Toe\obj\Debug\Tic Tac Toe.pdb
+E:\Noughts and Crosses\Tic Tac Toe\bin\Debug\Tic Tac Toe.exe.config
+E:\Noughts and Crosses\Tic Tac Toe\obj\Debug\Tic Tac Toe.exe
+E:\Noughts and Crosses\Tic Tac Toe\obj\Debug\Tic Tac Toe.xml
+E:\Noughts and Crosses\Tic Tac Toe\obj\Debug\Tic Tac Toe.pdb
+E:\Noughts and Crosses\Tic Tac Toe\obj\Debug\Tic_Tac_Toe.Resources.resources
+E:\Noughts and Crosses\Tic Tac Toe\obj\Debug\Tic Tac Toe.vbproj.GenerateResource.Cache
+E:\Noughts and Crosses\Tic Tac Toe\bin\Debug\Tic Tac Toe.exe
+E:\Noughts and Crosses\Tic Tac Toe\bin\Debug\Tic Tac Toe.pdb
+E:\Noughts and Crosses\Tic Tac Toe\bin\Debug\Tic Tac Toe.xml

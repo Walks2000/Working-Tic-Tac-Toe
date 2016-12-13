@@ -16,8 +16,8 @@
         Grid(6) = "6"
         Grid(7) = "7"
         Grid(8) = "8"
-        Console.Title = "Tic Tac Toe" : Console.ForegroundColor = ConsoleColor.Green
-        Console.WriteLine("Welcome to Tic Tac Toe!")
+        Console.Title = "Noughts and Crosses" : Console.ForegroundColor = ConsoleColor.Green
+        Console.WriteLine("Welcome to Noughts and Crosses!")
         Console.WriteLine("Before we begin, would you like a quick tutorial to understand ")
         Console.WriteLine("how the game works?")
         Console.WriteLine("1. Yes" & vbCrLf & "2. No")
@@ -54,6 +54,25 @@
     End Sub
     Sub Game()
         Dim Turns As Integer = 0
+        Dim Players(1)
+        Console.WriteLine("The first turn is based on a random generator.")
+        Console.WriteLine("If the value is above 50, X gets first go.")
+        Dim Random As New Random
+        Dim FirstTurn As Integer = Random.Next(0, 101)
+        Console.WriteLine("The number generated was {0}", FirstTurn)
+        If FirstTurn > 50 Then
+            Players(0) = "X"
+            Players(1) = "Y"
+        Else
+            Players(0) = "Y"
+            Players(1) = "X"
+        End If
+        If Players(0) = "X" Then
+            Console.WriteLine("X has first turn.")
+        Else
+            Console.WriteLine("Y has first turn.")
+        End If
+        Console.ReadLine()
         For i = 1 To 9
             Console.Clear()
             CheckWinX()
@@ -68,22 +87,29 @@
             If xWinner Or yWinner = True Then
                 EndGame()
             End If
+            DrawBoard()
             Console.WriteLine("It is now turn: {0}", Turns)
             Turns = Turns + 1
             If i Mod 2 = 1 Then
-                Console.WriteLine("It is your turn, X.")
+                Console.WriteLine("It is your turn, {0}.", Players(0))
                 Console.ReadLine()
-                DrawBoard()
                 Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                xInputValid()
+                If Players(0) = "X" Then
+                    xInputValid()
+                Else
+                    yInputValid()
+                End If
             End If
 
             If i Mod 2 = 0 Then
-                Console.WriteLine("It is your turn, Y.")
+                Console.WriteLine("It is your turn, {0}.", Players(1))
                 Console.ReadLine()
-                DrawBoard()
                 Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                yInputValid()
+                If Players(1) = "X" Then
+                    xInputValid()
+                Else
+                    yInputValid()
+                End If
             End If
 
 
