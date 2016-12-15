@@ -491,6 +491,7 @@
                 Else
                     Grid(RandomNumber) = "O"
                     RandomNumberBool = False
+                    MoveUsed = True
                 End If
             End While
         End If
@@ -554,7 +555,7 @@
             GamePVP()
         End If
         If GameType = "FunAI" Then
-            FunAI()
+            FunAIGame()
         End If
     End Sub
 
