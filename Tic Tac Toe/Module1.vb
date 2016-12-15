@@ -270,7 +270,7 @@
                     Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
                     xInputValid()
                 Else
-                    ValidFunAI()
+                    FunAI()
                 End If
             End If
 
@@ -280,7 +280,7 @@
                     Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
                     xInputValid()
                 Else
-                    ValidFunAI()
+                    FunAI()
                 End If
             End If
 
@@ -383,7 +383,7 @@
         End If
         Grid(yInputGrid) = "O"
     End Sub
-    Sub ValidFunAI()
+    Sub FunAI()
         Dim MoveUsed As Boolean
         MoveUsed = False
         If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
