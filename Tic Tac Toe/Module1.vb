@@ -69,15 +69,15 @@
         Console.WriteLine("The number generated was {0}", FirstTurn)
         If FirstTurn > 50 Then
             Players(0) = "X"
-            Players(1) = "Y"
+            Players(1) = "O"
         Else
-            Players(0) = "Y"
+            Players(0) = "O"
             Players(1) = "X"
         End If
         If Players(0) = "X" Then
             Console.WriteLine("X has first turn.")
         Else
-            Console.WriteLine("Y has first turn.")
+            Console.WriteLine("O has first turn.")
         End If
         Console.ReadLine()
         For i = 1 To 9
@@ -88,7 +88,7 @@
                 Console.WriteLine("Congratulations X! You won the game!")
             End If
             If yWinner = True Then
-                Console.WriteLine("Congratulations Y! You won the game!")
+                Console.WriteLine("Congratulations O! You won the game!")
             End If
 
             If xWinner Or yWinner = True Then
@@ -125,7 +125,7 @@
             Console.WriteLine("Congratulations X! You won the game!")
         End If
         If yWinner = True Then
-            Console.WriteLine("Congratulations Y! You won the game!")
+            Console.WriteLine("Congratulations O! You won the game!")
         End If
 
         If xWinner Or yWinner = True Then
@@ -142,7 +142,7 @@
         Dim Turns As Integer = 0
         Dim Players(1)
         Console.WriteLine("In AI mode, you get to choose who goes first.")
-        Console.WriteLine("X = you, Y = AI")
+        Console.WriteLine("X = you, O = AI")
         Dim FirstTurn As String
         FirstTurn = Console.ReadLine()
         Dim FirstTurnError As Boolean = True
@@ -150,18 +150,18 @@
             If FirstTurn = "X" Then
                 FirstTurnError = False
                 Players(0) = "X"
-                Players(1) = "Y"
+                Players(1) = "O"
             End If
-            If FirstTurn = "Y" Then
+            If FirstTurn = "O" Then
                 FirstTurnError = False
-                Players(0) = "Y"
+                Players(0) = "O"
                 Players(1) = "X"
             End If
         End While
         If Players(0) = "X" Then
             Console.WriteLine("X has first turn.")
         Else
-            Console.WriteLine("Y has first turn.")
+            Console.WriteLine("O has first turn.")
         End If
         Console.ReadLine()
         For i = 1 To 9
@@ -173,7 +173,7 @@
                 Console.WriteLine("Congratulations X! You won the game!")
             End If
             If yWinner = True Then
-                Console.WriteLine("Congratulations Y! You won the game!")
+                Console.WriteLine("Congratulations O! You won the game!")
             End If
 
             If xWinner Or yWinner = True Then
@@ -209,7 +209,7 @@
             Console.WriteLine("Congratulations X! You won the game!")
         End If
         If yWinner = True Then
-            Console.WriteLine("Congratulations Y! You won the game!")
+            Console.WriteLine("Congratulations O! You won the game!")
         End If
 
         If xWinner Or yWinner = True Then
@@ -225,7 +225,7 @@
         Dim Turns As Integer = 0
         Dim Players(1)
         Console.WriteLine("In AI mode, you get to choose who goes first.")
-        Console.WriteLine("X = you, Y = AI")
+        Console.WriteLine("X = you, O = AI")
         Dim FirstTurn As String
         FirstTurn = Console.ReadLine()
         Dim FirstTurnError As Boolean = True
@@ -233,18 +233,18 @@
             If FirstTurn = "X" Then
                 FirstTurnError = False
                 Players(0) = "X"
-                Players(1) = "Y"
+                Players(1) = "O"
             End If
-            If FirstTurn = "Y" Then
+            If FirstTurn = "O" Then
                 FirstTurnError = False
-                Players(0) = "Y"
+                Players(0) = "O"
                 Players(1) = "X"
             End If
         End While
         If Players(0) = "X" Then
             Console.WriteLine("X has first turn.")
         Else
-            Console.WriteLine("Y has first turn.")
+            Console.WriteLine("O has first turn.")
         End If
         Console.ReadLine()
         For i = 1 To 9
@@ -256,7 +256,7 @@
                 Console.WriteLine("Congratulations X! You won the game!")
             End If
             If yWinner = True Then
-                Console.WriteLine("Congratulations Y! You won the game!")
+                Console.WriteLine("Congratulations O! You won the game!")
             End If
 
             If xWinner Or yWinner = True Then
@@ -292,7 +292,7 @@
             Console.WriteLine("Congratulations X! You won the game!")
         End If
         If yWinner = True Then
-            Console.WriteLine("Congratulations Y! You won the game!")
+            Console.WriteLine("Congratulations O! You won the game!")
         End If
 
         If xWinner Or yWinner = True Then
@@ -331,12 +331,12 @@
                 End If
             End While
         End If
-        If Grid(xInputGrid) = "Y" Or Grid(xInputGrid) = "X" Then
+        If Grid(xInputGrid) = "O" Or Grid(xInputGrid) = "X" Then
             Dim xInputValid As Boolean = False
             While xInputValid = False
                 Console.WriteLine("Sorry, that spot is taken, try again.")
                 xInput = Console.ReadLine()
-                If Grid(xInputGrid) = "Y" Or Grid(xInputGrid) = "X" Then
+                If Grid(xInputGrid) = "O" Or Grid(xInputGrid) = "X" Then
                     xInputValid = False
                 Else
                     xInputValid = True
@@ -368,85 +368,85 @@
                 End If
             End While
         End If
-        If Grid(yInputGrid) = "Y" Or Grid(yInputGrid) = "X" Then
+        If Grid(yInputGrid) = "O" Or Grid(yInputGrid) = "X" Then
             Dim yInputValid As Boolean = False
             While yInputValid = False
                 Console.WriteLine("Sorry, that spot is taken, try again.")
                 yInput = Console.ReadLine()
-                If Grid(yInputGrid) = "Y" Or Grid(yInputGrid) = "X" Then
+                If Grid(yInputGrid) = "O" Or Grid(yInputGrid) = "X" Then
                     yInputValid = False
                 Else
                     yInputValid = True
                 End If
             End While
         End If
-        Grid(yInputGrid) = "Y"
+        Grid(yInputGrid) = "O"
     End Sub
     Sub ValidFunAI()
         Dim MoveUsed As Boolean
         MoveUsed = False
-        If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "Y" Then
-            Grid(2) = "Y"
+        If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "Y" Then
-            Grid(8) = "Y"
+        If Grid(0) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "Y" Then
-            Grid(7) = "Y"
+        If Grid(1) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(5) <> "X" And Grid(5) <> "Y" Then
-            Grid(5) = "Y"
+        If Grid(3) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(5) <> "X" And Grid(5) <> "O" Then
+            Grid(5) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(3) <> "X" And Grid(3) <> "Y" Then
-            Grid(3) = "Y"
+        If Grid(4) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(3) <> "X" And Grid(3) <> "O" Then
+            Grid(3) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "Y" Then
-            Grid(6) = "Y"
+        If Grid(2) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(0) <> "X" And Grid(0) <> "Y" Then
-            Grid(0) = "Y"
+        If Grid(4) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(0) <> "X" And Grid(0) <> "O" Then
+            Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "Y" Then
-            Grid(2) = "Y"
+        If Grid(6) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "Y" Then
-            Grid(8) = "Y"
+        If Grid(6) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(7) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "Y" Then
-            Grid(6) = "Y"
+        If Grid(7) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "X" And Grid(2) = "X" And MoveUsed = False And Grid(1) <> "X" And Grid(1) <> "Y" Then
-            Grid(1) = "Y"
+        If Grid(0) = "X" And Grid(2) = "X" And MoveUsed = False And Grid(1) <> "X" And Grid(1) <> "O" Then
+            Grid(1) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(1) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(3) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "Y" Then
-            Grid(7) = "Y"
+        If Grid(6) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(0) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
         If MoveUsed = False Then
@@ -455,10 +455,10 @@
             Dim RandomNumber As Integer
             While RandomNumberBool = True
                 RandomNumber = Random.Next(0, 8)
-                If Grid(RandomNumber) = "Y" Or Grid(RandomNumber) = "X" Then
+                If Grid(RandomNumber) = "O" Or Grid(RandomNumber) = "X" Then
                     RandomNumberBool = True
                 Else
-                    Grid(RandomNumber) = "Y"
+                    Grid(RandomNumber) = "O"
                     RandomNumberBool = False
                 End If
             End While
@@ -477,14 +477,14 @@
         End If
     End Sub
     Sub CheckWinY()
-        If Grid(0) = "Y" And Grid(1) = "Y" And Grid(2) = "Y" Or
-         Grid(0) = "Y" And Grid(4) = "Y" And Grid(8) = "Y" Or
-         Grid(1) = "Y" And Grid(4) = "Y" And Grid(7) = "Y" Or
-         Grid(2) = "Y" And Grid(4) = "Y" And Grid(6) = "Y" Or
-         Grid(3) = "Y" And Grid(4) = "Y" And Grid(5) = "Y" Or
-         Grid(2) = "Y" And Grid(5) = "Y" And Grid(8) = "Y" Or
-         Grid(0) = "Y" And Grid(3) = "Y" And Grid(6) = "Y" Or
-         Grid(6) = "Y" And Grid(7) = "Y" And Grid(8) = "Y" Then
+        If Grid(0) = "O" And Grid(1) = "O" And Grid(2) = "O" Or
+         Grid(0) = "O" And Grid(4) = "O" And Grid(8) = "O" Or
+         Grid(1) = "O" And Grid(4) = "O" And Grid(7) = "O" Or
+         Grid(2) = "O" And Grid(4) = "O" And Grid(6) = "O" Or
+         Grid(3) = "O" And Grid(4) = "O" And Grid(5) = "O" Or
+         Grid(2) = "O" And Grid(5) = "O" And Grid(8) = "O" Or
+         Grid(0) = "O" And Grid(3) = "O" And Grid(6) = "O" Or
+         Grid(6) = "O" And Grid(7) = "O" And Grid(8) = "O" Then
             yWinner = True
         End If
     End Sub
@@ -559,200 +559,200 @@
         'Trying to develop a minmax feature, but might go the for the 'fun' AI first due to the easier nature.
         Dim MoveUsed As Boolean
         MoveUsed = False
-        If Grid(0) = "Y" And Grid(1) = "Y" And MoveUsed = False And Grid(2) <> "X" Then
-            Grid(2) = "Y"
+        If Grid(0) = "O" And Grid(1) = "O" And MoveUsed = False And Grid(2) <> "X" Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "Y" And Grid(4) = "Y" And MoveUsed = False And Grid(8) <> "X" Then
-            Grid(8) = "Y"
+        If Grid(0) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(8) <> "X" Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "Y" And Grid(4) = "Y" And MoveUsed = False And Grid(7) <> "X" Then
-            Grid(7) = "Y"
+        If Grid(1) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(7) <> "X" Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "Y" And Grid(4) = "Y" And MoveUsed = False And Grid(5) <> "X" Then
-            Grid(5) = "Y"
+        If Grid(3) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(5) <> "X" Then
+            Grid(5) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "Y" And Grid(5) = "Y" And MoveUsed = False And Grid(3) <> "X" Then
-            Grid(3) = "Y"
+        If Grid(4) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(3) <> "X" Then
+            Grid(3) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "Y" And Grid(4) = "Y" And MoveUsed = False And Grid(6) <> "X" Then
-            Grid(6) = "Y"
+        If Grid(2) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(6) <> "X" Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "Y" And Grid(8) = "Y" And MoveUsed = False And Grid(0) <> "X" Then
-            Grid(0) = "Y"
+        If Grid(4) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(0) <> "X" Then
+            Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "Y" And Grid(4) = "Y" And MoveUsed = False And Grid(2) <> "X" Then
-            Grid(2) = "Y"
+        If Grid(6) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(2) <> "X" Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "Y" And Grid(7) = "Y" And MoveUsed = False And Grid(8) <> "X" Then
-            Grid(8) = "Y"
+        If Grid(6) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(8) <> "X" Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(7) = "Y" And Grid(8) = "Y" And MoveUsed = False And Grid(6) <> "X" Then
-            Grid(6) = "Y"
+        If Grid(7) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(6) <> "X" Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "Y" And Grid(2) = "Y" And MoveUsed = False And Grid(1) <> "X" Then
-            Grid(1) = "Y"
+        If Grid(0) = "O" And Grid(2) = "O" And MoveUsed = False And Grid(1) <> "X" Then
+            Grid(1) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "Y" And Grid(7) = "Y" And MoveUsed = False And Grid(4) <> "X" Then
-            Grid(4) = "Y"
+        If Grid(1) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(4) <> "X" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "Y" And Grid(5) = "Y" And MoveUsed = False And Grid(4) <> "X" Then
-            Grid(4) = "Y"
+        If Grid(3) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(4) <> "X" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "Y" And Grid(8) = "Y" And MoveUsed = False And Grid(7) <> "X" Then
-            Grid(7) = "Y"
+        If Grid(6) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(7) <> "X" Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "Y" And Grid(8) = "Y" And MoveUsed = False And Grid(4) <> "X" Then
-            Grid(4) = "Y"
+        If Grid(0) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(4) <> "X" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "Y" And Grid(6) = "Y" And MoveUsed = False And Grid(4) <> "X" Then
-            Grid(4) = "Y"
+        If Grid(2) = "O" And Grid(6) = "O" And MoveUsed = False And Grid(4) <> "X" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
         'End of winning moves, begins blocking player win.
 
-        If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "Y" Then
-            Grid(2) = "Y"
+        If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "Y" Then
-            Grid(8) = "Y"
+        If Grid(0) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "Y" Then
-            Grid(7) = "Y"
+        If Grid(1) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(5) <> "X" And Grid(5) <> "Y" Then
-            Grid(5) = "Y"
+        If Grid(3) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(5) <> "X" And Grid(5) <> "O" Then
+            Grid(5) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(3) <> "X" And Grid(3) <> "Y" Then
-            Grid(3) = "Y"
+        If Grid(4) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(3) <> "X" And Grid(3) <> "O" Then
+            Grid(3) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "Y" Then
-            Grid(6) = "Y"
+        If Grid(2) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(0) <> "X" And Grid(0) <> "Y" Then
-            Grid(0) = "Y"
+        If Grid(4) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(0) <> "X" And Grid(0) <> "O" Then
+            Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "Y" Then
-            Grid(2) = "Y"
+        If Grid(6) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "Y" Then
-            Grid(8) = "Y"
+        If Grid(6) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(7) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "Y" Then
-            Grid(6) = "Y"
+        If Grid(7) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "X" And Grid(2) = "X" And MoveUsed = False And Grid(1) <> "X" And Grid(1) <> "Y" Then
-            Grid(1) = "Y"
+        If Grid(0) = "X" And Grid(2) = "X" And MoveUsed = False And Grid(1) <> "X" And Grid(1) <> "O" Then
+            Grid(1) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(1) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(3) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "Y" Then
-            Grid(7) = "Y"
+        If Grid(6) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(0) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "Y" Then
-            Grid(4) = "Y"
+        If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
             MoveUsed = True
         End If
         'End of blocking moves, beginning of win setups
 
-        If Grid(0) = "Y" And Grid(2) <> "X" And Grid(1) <> "X" And MoveUsed = False Then
-            Grid(2) = "Y"
+        If Grid(0) = "O" And Grid(2) <> "X" And Grid(1) <> "X" And MoveUsed = False Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "Y" And Grid(3) <> "X" And Grid(6) <> "X" And MoveUsed = False Then
-            Grid(6) = "Y"
+        If Grid(0) = "O" And Grid(3) <> "X" And Grid(6) <> "X" And MoveUsed = False Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "Y" And Grid(4) <> "X" And Grid(8) <> "X" And MoveUsed = False Then
-            Grid(8) = "Y"
+        If Grid(0) = "O" And Grid(4) <> "X" And Grid(8) <> "X" And MoveUsed = False Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "Y" And Grid(5) <> "X" And Grid(8) <> "X" And MoveUsed = False Then
-            Grid(8) = "Y"
+        If Grid(2) = "O" And Grid(5) <> "X" And Grid(8) <> "X" And MoveUsed = False Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "Y" And Grid(4) <> "X" And Grid(6) <> "X" And MoveUsed = False Then
-            Grid(6) = "Y"
+        If Grid(2) = "O" And Grid(4) <> "X" And Grid(6) <> "X" And MoveUsed = False Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "Y" And Grid(1) <> "X" And Grid(0) <> "X" And MoveUsed = False Then
-            Grid(0) = "Y"
+        If Grid(2) = "O" And Grid(1) <> "X" And Grid(0) <> "X" And MoveUsed = False Then
+            Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(8) = "Y" And Grid(6) <> "X" And Grid(7) <> "X" And MoveUsed = False Then
-            Grid(6) = "Y"
+        If Grid(8) = "O" And Grid(6) <> "X" And Grid(7) <> "X" And MoveUsed = False Then
+            Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(8) = "Y" And Grid(4) <> "X" And Grid(0) <> "X" And MoveUsed = False Then
-            Grid(0) = "Y"
+        If Grid(8) = "O" And Grid(4) <> "X" And Grid(0) <> "X" And MoveUsed = False Then
+            Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(8) = "Y" And Grid(2) <> "X" And Grid(5) <> "X" And MoveUsed = False Then
-            Grid(2) = "Y"
+        If Grid(8) = "O" And Grid(2) <> "X" And Grid(5) <> "X" And MoveUsed = False Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "Y" And Grid(0) <> "X" And Grid(3) <> "X" And MoveUsed = False Then
-            Grid(0) = "Y"
+        If Grid(6) = "O" And Grid(0) <> "X" And Grid(3) <> "X" And MoveUsed = False Then
+            Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "Y" And Grid(2) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
-            Grid(2) = "Y"
+        If Grid(6) = "O" And Grid(2) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
+            Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "Y" And Grid(7) <> "X" And Grid(8) <> "X" And MoveUsed = False Then
-            Grid(8) = "Y"
+        If Grid(6) = "O" And Grid(7) <> "X" And Grid(8) <> "X" And MoveUsed = False Then
+            Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "Y" And Grid(7) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
-            Grid(7) = "Y"
+        If Grid(1) = "O" And Grid(7) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
+            Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(5) = "Y" And Grid(4) <> "X" And Grid(3) <> "X" And MoveUsed = False Then
-            Grid(3) = "Y"
+        If Grid(5) = "O" And Grid(4) <> "X" And Grid(3) <> "X" And MoveUsed = False Then
+            Grid(3) = "O"
             MoveUsed = True
         End If
-        If Grid(7) = "Y" And Grid(1) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
-            Grid(1) = "Y"
+        If Grid(7) = "O" And Grid(1) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
+            Grid(1) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "Y" And Grid(5) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
-            Grid(5) = "Y"
+        If Grid(3) = "O" And Grid(5) <> "X" And Grid(4) <> "X" And MoveUsed = False Then
+            Grid(5) = "O"
             MoveUsed = True
         End If
         If MoveUsed = False Then
@@ -761,10 +761,10 @@
             Dim RandomNumber As Integer
             While RandomNumberBool = True
                 RandomNumber = Random.Next(0, 8)
-                If Grid(RandomNumber) = "Y" Or Grid(RandomNumber) = "X" Then
+                If Grid(RandomNumber) = "O" Or Grid(RandomNumber) = "X" Then
                     RandomNumberBool = True
                 Else
-                    Grid(RandomNumber) = "Y"
+                    Grid(RandomNumber) = "O"
                     RandomNumberBool = False
                 End If
             End While
