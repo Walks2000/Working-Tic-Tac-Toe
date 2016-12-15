@@ -31,7 +31,7 @@
                 GameAI()
             Case 3
                 GameType = "FunAI"
-                FunAI()
+                FunAIGame()
             Case 4
                 GameType = "PVP"
                 GamePVP()
@@ -220,7 +220,7 @@
         Console.WriteLine("It's a draw!")
         EndGame()
     End Sub
-    Sub FunAI()
+    Sub FunAIGame()
         Console.Clear()
         Dim Turns As Integer = 0
         Dim Players(1)
