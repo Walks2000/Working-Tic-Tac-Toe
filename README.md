@@ -1,2 +1,2 @@
 # Working-Tic-Tac-Toe
-Got bored @ 2AM so I made this, a working(?, needs testing.) Tic Tac Toe game that solely runs in a console window.
+Started as a Tic-Tac-Toe project, but has been converted to a Noughts and Crosses game since and given features such as a working AI that you can play against.
