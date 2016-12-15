@@ -767,6 +767,7 @@
                 Else
                     Grid(RandomNumber) = "O"
                     RandomNumberBool = False
+                    MoveUsed = True
                 End If
             End While
         End If
