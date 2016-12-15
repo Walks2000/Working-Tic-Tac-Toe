@@ -314,37 +314,53 @@
         If xInput = "Reset" Then
             Reset()
         End If
-        Dim xInputGrid As String = xInput
-
         If xInput = "Menu" Then
             Main()
         End If
 
-        If xInput > 8 Or xInput < 0 Then
+        Try
+            Convert.ToInt32(xInput)
+        Catch ex As Exception
             Dim xInputValid As Boolean = False
             While xInputValid = False
                 Console.WriteLine("Sorry, that is not a valid number, try again.")
                 xInput = Console.ReadLine()
-                If xInput > 8 Or xInput < 0 Then
-                    xInputValid = False
-                Else
+                Try
+                    Convert.ToInt32(xInput)
                     xInputValid = True
-                End If
-            End While
-        End If
-        If Grid(xInputGrid) = "O" Or Grid(xInputGrid) = "X" Then
-            Dim xInputValid As Boolean = False
-            While xInputValid = False
-                Console.WriteLine("Sorry, that spot is taken, try again.")
-                xInput = Console.ReadLine()
-                If Grid(xInputGrid) = "O" Or Grid(xInputGrid) = "X" Then
+                Catch ex1 As Exception
                     xInputValid = False
-                Else
-                    xInputValid = True
-                End If
+                End Try
             End While
-        End If
-        Grid(xInputGrid) = "X"
+        End Try
+        Dim xInputGrid As String = xInput
+            If xInput > 8 Or xInput < 0 Then
+                Dim xInputValid As Boolean = False
+                While xInputValid = False
+                    Console.WriteLine("Sorry, that is not a valid number, try again.")
+                    xInput = Console.ReadLine()
+                    If xInput > 8 Or xInput < 0 Then
+                        xInputValid = False
+                    Else
+                        xInputValid = True
+                    End If
+                End While
+            End If
+            If Grid(xInputGrid) = "O" Or Grid(xInputGrid) = "X" Then
+                Dim xInputValid As Boolean = False
+                While xInputValid = False
+                    Console.WriteLine("Sorry, that spot is taken, try again.")
+                    xInput = Console.ReadLine()
+                    If Grid(xInputGrid) = "O" Or Grid(xInputGrid) = "X" Then
+                        xInputValid = False
+                    Else
+                        xInputValid = True
+                    End If
+                End While
+            End If
+
+
+            Grid(xInputGrid) = "X"
     End Sub
     Sub yInputValid()
         yInput = Console.ReadLine()
@@ -355,7 +371,21 @@
         If xInput = "Menu" Then
             Main()
         End If
-
+        Try
+            Convert.ToInt32(yInput)
+        Catch ex As Exception
+            Dim yInputValid As Boolean = False
+            While yInputValid = False
+                Console.WriteLine("Sorry, that is not a valid number, try again.")
+                yInput = Console.ReadLine()
+                Try
+                    Convert.ToInt32(xInput)
+                    yInputValid = True
+                Catch ex1 As Exception
+                    yInputValid = False
+                End Try
+            End While
+        End Try
         Dim yInputGrid As String = yInput
         If yInput > 8 Or yInput < 0 Then
             Dim yInputValid As Boolean = False
