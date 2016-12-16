@@ -5,6 +5,7 @@
     Public xWinner As Boolean = False
     Public yWinner As Boolean = False
     Public GameType As String
+    Public Rounds As Integer
 
     Sub Main()
         Console.Clear()
@@ -221,87 +222,111 @@
         EndGame()
     End Sub
     Sub FunAIGame()
+        Dim xWins As Integer = 0
+        Dim yWins As Integer = 0
+        Dim RoundsPlayed As Integer = 0
+        BestOf()
         Console.Clear()
-        Dim Turns As Integer = 0
-        Dim Players(1)
-        Console.WriteLine("In AI mode, you get to choose who goes first.")
-        Console.WriteLine("X = you, O = AI")
-        Dim FirstTurn As String
-        FirstTurn = Console.ReadLine()
-        Dim FirstTurnError As Boolean = True
-        While FirstTurnError = True
-            If FirstTurn = "X" Then
-                FirstTurnError = False
-                Players(0) = "X"
-                Players(1) = "O"
+        For RoundsPlayed = 0 To Rounds
+            Grid(0) = "0"
+            Grid(1) = "1"
+            Grid(2) = "2"
+            Grid(3) = "3"
+            Grid(4) = "4"
+            Grid(5) = "5"
+            Grid(6) = "6"
+            Grid(7) = "7"
+            Grid(8) = "8"
+            yWinner = False
+            xWinner = False
+            Console.Clear()
+            Dim Turns As Integer = 0
+            Dim Players(1)
+            Console.WriteLine("In AI mode, you get to choose who goes first.")
+            Console.WriteLine("X = you, O = AI")
+            Dim FirstTurn As String
+            FirstTurn = Console.ReadLine()
+            Dim FirstTurnError As Boolean = True
+            While FirstTurnError = True
+                If FirstTurn = "X" Then
+                    FirstTurnError = False
+                    Players(0) = "X"
+                    Players(1) = "O"
+                    Exit While
+                End If
+                If FirstTurn = "O" Then
+                    FirstTurnError = False
+                    Players(0) = "O"
+                    Players(1) = "X"
+                    Exit While
+                End If
+                Console.WriteLine("That is not valid, please enter a new value now.")
+                FirstTurn = Console.ReadLine
+            End While
+            Console.Clear()
+            If Players(0) = "X" Then
+                Console.WriteLine("X has first turn.")
+            Else
+                Console.WriteLine("O has first turn.")
             End If
-            If FirstTurn = "O" Then
-                FirstTurnError = False
-                Players(0) = "O"
-                Players(1) = "X"
-            End If
-        End While
-        If Players(0) = "X" Then
-            Console.WriteLine("X has first turn.")
-        Else
-            Console.WriteLine("O has first turn.")
-        End If
-        Console.ReadLine()
-        For i = 1 To 9
+            Console.ReadLine()
+            For i = 1 To 9
+                Console.Clear()
+                DrawBoard()
+                CheckWinX()
+                CheckWinY()
+                If xWinner = True Then
+                    Console.WriteLine("Congratulations X! You won the round!")
+                    xWins = xWins + 1
+                    Continue For
+                End If
+                If yWinner = True Then
+                    Console.WriteLine("Congratulations O! You won the round!")
+                    yWins = yWins + 1
+                    Continue For
+                End If
+                Console.WriteLine("It is now turn: {0}", Turns)
+                Turns = Turns + 1
+                If i Mod 2 = 1 Then
+                    If Players(0) = "X" Then
+                        Console.WriteLine("It is your turn, {0}.", Players(0))
+                        Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                        xInputValid()
+                    Else
+                        FunAI()
+                    End If
+                End If
+
+                If i Mod 2 = 0 Then
+                    If Players(1) = "X" Then
+                        Console.WriteLine("It is your turn, {0}.", Players(1))
+                        Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                        xInputValid()
+                    Else
+                        FunAI()
+                    End If
+                End If
+            Next
             Console.Clear()
             DrawBoard()
-            CheckWinX()
-            CheckWinY()
-            If xWinner = True Then
-                Console.WriteLine("Congratulations X! You won the game!")
+            If yWinner = False And xWinner = False Then
+                Console.WriteLine("The round ended in a draw!")
             End If
-            If yWinner = True Then
-                Console.WriteLine("Congratulations O! You won the game!")
+            If RoundsPlayed < Rounds Then
+                Console.WriteLine("Press enter to begin the next round.")
             End If
-
-            If xWinner Or yWinner = True Then
-                EndGame()
-            End If
-            Console.WriteLine("It is now turn: {0}", Turns)
-            Turns = Turns + 1
-            If i Mod 2 = 1 Then
-                If Players(0) = "X" Then
-                    Console.WriteLine("It is your turn, {0}.", Players(0))
-                    Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                    xInputValid()
-                Else
-                    FunAI()
-                End If
-            End If
-
-            If i Mod 2 = 0 Then
-                If Players(1) = "X" Then
-                    Console.WriteLine("It is your turn, {0}.", Players(1))
-                    Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                    xInputValid()
-                Else
-                    FunAI()
-                End If
-            End If
-
-
+            Console.ReadLine()
         Next
-        CheckWinX()
-        CheckWinY()
-        If xWinner = True Then
+        If xWins > yWins Then
             Console.WriteLine("Congratulations X! You won the game!")
         End If
-        If yWinner = True Then
+        If yWins > xWins Then
             Console.WriteLine("Congratulations O! You won the game!")
-            DrawBoard()
         End If
-
-        If xWinner Or yWinner = True Then
-            EndGame()
+        If xWins = yWins Then
+            Console.WriteLine("The game has ended as a draw!")
         End If
-        Console.Clear()
-        DrawBoard()
-        Console.WriteLine("It's a draw!")
+        Console.ReadLine()
         EndGame()
     End Sub
     Sub DrawBoard()
@@ -485,7 +510,7 @@
             Dim Random As New Random
             Dim RandomNumber As Integer
             While RandomNumberBool = True
-                RandomNumber = Random.Next(0, 8)
+                RandomNumber = Random.Next(0, 9)
                 If Grid(RandomNumber) = "O" Or Grid(RandomNumber) = "X" Then
                     RandomNumberBool = True
                 Else
@@ -792,7 +817,7 @@
             Dim Random As New Random
             Dim RandomNumber As Integer
             While RandomNumberBool = True
-                RandomNumber = Random.Next(0, 8)
+                RandomNumber = Random.Next(0, 9)
                 If Grid(RandomNumber) = "O" Or Grid(RandomNumber) = "X" Then
                     RandomNumberBool = True
                 Else
@@ -802,5 +827,21 @@
                 End If
             End While
         End If
+    End Sub
+    Sub BestOf()
+        Console.Clear()
+        Console.WriteLine("How many rounds do you want to play?")
+        Try
+            Rounds = Console.ReadLine
+            If Rounds < 1 Then
+                Console.WriteLine("That input is not valid, try again.")
+                Console.ReadLine()
+                BestOf()
+            End If
+        Catch ex As Exception
+            Console.WriteLine("That input is not valid, try again.")
+            Console.ReadLine()
+            BestOf()
+        End Try
     End Sub
 End Module
