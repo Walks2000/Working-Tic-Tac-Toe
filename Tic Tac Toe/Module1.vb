@@ -60,165 +60,225 @@
         Main()
     End Sub
     Sub GamePVP()
-        Console.Clear()
-        Dim Turns As Integer = 0
-        Dim Players(1)
-        Console.WriteLine("The first turn is based on a random generator.")
-        Console.WriteLine("If the value is above 50, X gets first go.")
-        Dim Random As New Random
-        Dim FirstTurn As Integer = Random.Next(0, 101)
-        Console.WriteLine("The number generated was {0}", FirstTurn)
-        If FirstTurn > 50 Then
-            Players(0) = "X"
-            Players(1) = "O"
-        Else
-            Players(0) = "O"
-            Players(1) = "X"
-        End If
-        If Players(0) = "X" Then
-            Console.WriteLine("X has first turn.")
-        Else
-            Console.WriteLine("O has first turn.")
-        End If
-        Console.ReadLine()
-        For i = 1 To 9
+        Dim xWins As Integer = 0
+        Dim yWins As Integer = 0
+        Dim RoundsPlayed As Integer = 1
+        BestOf()
+        For RoundsPlayed = 1 To Rounds
+            Grid(0) = "0"
+            Grid(1) = "1"
+            Grid(2) = "2"
+            Grid(3) = "3"
+            Grid(4) = "4"
+            Grid(5) = "5"
+            Grid(6) = "6"
+            Grid(7) = "7"
+            Grid(8) = "8"
+            yWinner = False
+            xWinner = False
             Console.Clear()
-            CheckWinX()
-            CheckWinY()
-            If xWinner = True Then
-                Console.WriteLine("Congratulations X! You won the game!")
-            End If
-            If yWinner = True Then
-                Console.WriteLine("Congratulations O! You won the game!")
-            End If
-
-            If xWinner Or yWinner = True Then
-                EndGame()
-            End If
-            DrawBoard()
-            Console.WriteLine("It is now turn: {0}", Turns)
-            Turns = Turns + 1
-            If i Mod 2 = 1 Then
-                Console.WriteLine("It is your turn, {0}.", Players(0))
-                Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                If Players(0) = "X" Then
-                    xInputValid()
-                Else
-                    yInputValid()
-                End If
-            End If
-
-            If i Mod 2 = 0 Then
-                Console.WriteLine("It is your turn, {0}.", Players(1))
-                Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                If Players(1) = "X" Then
-                    xInputValid()
-                Else
-                    yInputValid()
-                End If
-            End If
-
-
-        Next
-        CheckWinX()
-        CheckWinY()
-        If xWinner = True Then
-            Console.WriteLine("Congratulations X! You won the game!")
-        End If
-        If yWinner = True Then
-            Console.WriteLine("Congratulations O! You won the game!")
-        End If
-
-        If xWinner Or yWinner = True Then
-            EndGame()
-        End If
-        Console.Clear()
-        DrawBoard()
-        Console.WriteLine("It's a draw!")
-        EndGame()
-
-    End Sub
-    Sub GameAI()
-        Console.Clear()
-        Dim Turns As Integer = 0
-        Dim Players(1)
-        Console.WriteLine("In AI mode, you get to choose who goes first.")
-        Console.WriteLine("X = you, O = AI")
-        Dim FirstTurn As String
-        FirstTurn = Console.ReadLine()
-        Dim FirstTurnError As Boolean = True
-        While FirstTurnError = True
-            If FirstTurn = "X" Then
-                FirstTurnError = False
+            Dim Turns As Integer = 0
+            Dim Players(1)
+            Console.WriteLine("The first turn is based on a random generator.")
+            Console.WriteLine("If the value is above 50, X gets first go.")
+            Dim Random As New Random
+            Dim FirstTurn As Integer = Random.Next(0, 101)
+            Console.WriteLine("The number generated was {0}", FirstTurn)
+            If FirstTurn > 50 Then
                 Players(0) = "X"
                 Players(1) = "O"
-            End If
-            If FirstTurn = "O" Then
-                FirstTurnError = False
+            Else
                 Players(0) = "O"
                 Players(1) = "X"
             End If
-        End While
-        If Players(0) = "X" Then
-            Console.WriteLine("X has first turn.")
-        Else
-            Console.WriteLine("O has first turn.")
-        End If
-        Console.ReadLine()
-        For i = 1 To 9
+            If Players(0) = "X" Then
+                Console.WriteLine("X has first turn.")
+            Else
+                Console.WriteLine("O has first turn.")
+            End If
+            Console.ReadLine()
+            For i = 1 To 9
+                Console.Clear()
+                CheckWinX()
+                CheckWinY()
+                If xWinner = True Then
+                    Continue For
+                End If
+                If yWinner = True Then
+                    Continue For
+                End If
+
+                If xWinner Or yWinner = True Then
+                    EndGame()
+                End If
+                DrawBoard()
+                Console.WriteLine("It is now turn: {0}", Turns)
+                Turns = Turns + 1
+                If i Mod 2 = 1 Then
+                    Console.WriteLine("It is your turn, {0}.", Players(0))
+                    Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                    If Players(0) = "X" Then
+                        xInputValid()
+                    Else
+                        yInputValid()
+                    End If
+                End If
+
+                If i Mod 2 = 0 Then
+                    Console.WriteLine("It is your turn, {0}.", Players(1))
+                    Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                    If Players(1) = "X" Then
+                        xInputValid()
+                    Else
+                        yInputValid()
+                    End If
+                End If
+
+
+            Next
             Console.Clear()
             DrawBoard()
             CheckWinX()
             CheckWinY()
             If xWinner = True Then
-                Console.WriteLine("Congratulations X! You won the game!")
+                Console.WriteLine("Congratulations X! You won the round!")
             End If
             If yWinner = True Then
-                Console.WriteLine("Congratulations O! You won the game!")
+                Console.WriteLine("Congratulations O! You won the round!")
             End If
 
-            If xWinner Or yWinner = True Then
-                EndGame()
+            If xWinner = False And yWinner = False Then
+                Console.WriteLine("The round end as a draw.")
             End If
-            Console.WriteLine("It is now turn: {0}", Turns)
-            Turns = Turns + 1
-            If i Mod 2 = 1 Then
-                If Players(0) = "X" Then
-                    Console.WriteLine("It is your turn, {0}.", Players(0))
-                    Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                    xInputValid()
-                Else
-                    ExperimentalAI()
-                End If
-            End If
-
-            If i Mod 2 = 0 Then
-                If Players(1) = "X" Then
-                    Console.WriteLine("It is your turn, {0}.", Players(1))
-                    Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
-                    xInputValid()
-                Else
-                    ExperimentalAI()
-                End If
-            End If
-
-
+            Console.ReadLine()
         Next
-        CheckWinX()
-        CheckWinY()
-        If xWinner = True Then
-            Console.WriteLine("Congratulations X! You won the game!")
-        End If
-        If yWinner = True Then
-            Console.WriteLine("Congratulations O! You won the game!")
-        End If
-
-        If xWinner Or yWinner = True Then
-            EndGame()
-        End If
         Console.Clear()
-        DrawBoard()
-        Console.WriteLine("It's a draw!")
+        If xWins > yWins Then
+            Console.WriteLine("Congratulations! You won the game!")
+        End If
+        If yWins > xWins Then
+            Console.WriteLine("Oh no, you lost.")
+        End If
+        If xWins = yWins Then
+            Console.WriteLine("The game has ended as a draw!")
+        End If
+        Console.ReadLine()
+        EndGame()
+    End Sub
+    Sub GameAI()
+        Dim xWins As Integer = 0
+        Dim yWins As Integer = 0
+        Dim RoundsPlayed As Integer = 1
+        BestOf()
+        Console.Clear()
+        For RoundsPlayed = 1 To Rounds
+            Grid(0) = "0"
+            Grid(1) = "1"
+            Grid(2) = "2"
+            Grid(3) = "3"
+            Grid(4) = "4"
+            Grid(5) = "5"
+            Grid(6) = "6"
+            Grid(7) = "7"
+            Grid(8) = "8"
+            yWinner = False
+            xWinner = False
+            Console.Clear()
+            Dim Turns As Integer = 0
+            Dim Players(1)
+            Console.WriteLine("In AI mode, you get to choose who goes first.")
+            Console.WriteLine("X = you, O = AI")
+            Dim FirstTurn As String
+            FirstTurn = Console.ReadLine()
+            Dim FirstTurnError As Boolean = True
+            While FirstTurnError = True
+                If FirstTurn = "X" Then
+                    FirstTurnError = False
+                    Players(0) = "X"
+                    Players(1) = "O"
+                    Exit While
+                End If
+                If FirstTurn = "O" Then
+                    FirstTurnError = False
+                    Players(0) = "O"
+                    Players(1) = "X"
+                    Exit While
+                End If
+                Console.WriteLine("That is not valid, please enter a new value now.")
+                FirstTurn = Console.ReadLine
+            End While
+            Console.Clear()
+            If Players(0) = "X" Then
+                Console.WriteLine("The player has the first turn.")
+            Else
+                Console.WriteLine("The AI has the first turn.")
+            End If
+            Console.ReadLine()
+            For i = 1 To 9
+                Console.Clear()
+                DrawBoard()
+                CheckWinX()
+                CheckWinY()
+                If xWinner = True Then
+                    Continue For
+                End If
+                If yWinner = True Then
+                    Continue For
+                End If
+                Console.WriteLine("It is now turn: {0}", Turns)
+                Turns = Turns + 1
+                If i Mod 2 = 1 Then
+                    If Players(0) = "X" Then
+                        Console.WriteLine("It is your turn player.")
+                        Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                        xInputValid()
+                    Else
+                        ExperimentalAI()
+                    End If
+                End If
+
+                If i Mod 2 = 0 Then
+                    If Players(1) = "X" Then
+                        Console.WriteLine("It is your turn player.")
+                        Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                        xInputValid()
+                    Else
+                        ExperimentalAI()
+                    End If
+                End If
+
+                CheckWinX()
+                CheckWinY()
+            Next
+            Console.Clear()
+            DrawBoard()
+            If xWinner = True Then
+                Console.WriteLine("The player won the round!")
+                xWins = xWins + 1
+            End If
+            If yWinner = True Then
+                Console.WriteLine("The AI won the round!")
+                yWins = yWins + 1
+            End If
+            If yWinner = False And xWinner = False Then
+                Console.WriteLine("The round ended in a draw!")
+            End If
+            If RoundsPlayed < Rounds Then
+                Console.WriteLine("Press enter to begin the next round.")
+            End If
+            Console.ReadLine()
+        Next
+        Console.Clear()
+        If xWins > yWins Then
+            Console.WriteLine("Congratulations! You won the game!")
+        End If
+        If yWins > xWins Then
+            Console.WriteLine("Oh no, you lost.")
+        End If
+        If xWins = yWins Then
+            Console.WriteLine("The game has ended as a draw!")
+        End If
+        Console.ReadLine()
         EndGame()
     End Sub
     Sub FunAIGame()
