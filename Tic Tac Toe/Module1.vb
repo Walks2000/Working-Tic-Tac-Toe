@@ -224,10 +224,10 @@
     Sub FunAIGame()
         Dim xWins As Integer = 0
         Dim yWins As Integer = 0
-        Dim RoundsPlayed As Integer = 0
+        Dim RoundsPlayed As Integer = 1
         BestOf()
         Console.Clear()
-        For RoundsPlayed = 0 To Rounds
+        For RoundsPlayed = 1 To Rounds
             Grid(0) = "0"
             Grid(1) = "1"
             Grid(2) = "2"
@@ -265,9 +265,9 @@
             End While
             Console.Clear()
             If Players(0) = "X" Then
-                Console.WriteLine("X has first turn.")
+                Console.WriteLine("The player has the first turn.")
             Else
-                Console.WriteLine("O has first turn.")
+                Console.WriteLine("The AI has the first turn.")
             End If
             Console.ReadLine()
             For i = 1 To 9
@@ -276,20 +276,16 @@
                 CheckWinX()
                 CheckWinY()
                 If xWinner = True Then
-                    Console.WriteLine("Congratulations X! You won the round!")
-                    xWins = xWins + 1
                     Continue For
                 End If
                 If yWinner = True Then
-                    Console.WriteLine("Congratulations O! You won the round!")
-                    yWins = yWins + 1
                     Continue For
                 End If
                 Console.WriteLine("It is now turn: {0}", Turns)
                 Turns = Turns + 1
                 If i Mod 2 = 1 Then
                     If Players(0) = "X" Then
-                        Console.WriteLine("It is your turn, {0}.", Players(0))
+                        Console.WriteLine("It is your turn player.")
                         Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
                         xInputValid()
                     Else
@@ -299,16 +295,27 @@
 
                 If i Mod 2 = 0 Then
                     If Players(1) = "X" Then
-                        Console.WriteLine("It is your turn, {0}.", Players(1))
+                        Console.WriteLine("It is your turn player.")
                         Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
                         xInputValid()
                     Else
                         FunAI()
                     End If
                 End If
+
+                CheckWinX()
+                CheckWinY()
             Next
             Console.Clear()
             DrawBoard()
+            If xWinner = True Then
+                Console.WriteLine("The player won the round!")
+                xWins = xWins + 1
+            End If
+            If yWinner = True Then
+                Console.WriteLine("The AI won the round!")
+                yWins = yWins + 1
+            End If
             If yWinner = False And xWinner = False Then
                 Console.WriteLine("The round ended in a draw!")
             End If
@@ -317,11 +324,12 @@
             End If
             Console.ReadLine()
         Next
+        Console.Clear()
         If xWins > yWins Then
-            Console.WriteLine("Congratulations X! You won the game!")
+            Console.WriteLine("Congratulations! You won the game!")
         End If
         If yWins > xWins Then
-            Console.WriteLine("Congratulations O! You won the game!")
+            Console.WriteLine("Oh no, you lost.")
         End If
         If xWins = yWins Then
             Console.WriteLine("The game has ended as a draw!")
