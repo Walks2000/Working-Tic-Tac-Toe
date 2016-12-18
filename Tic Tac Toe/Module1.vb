@@ -22,7 +22,7 @@
         xWinner = False
         Console.Title = "Noughts and Crosses" : Console.ForegroundColor = ConsoleColor.Green
         Console.WriteLine("Welcome to Noughts and Crosses!")
-        Console.WriteLine("1. Tutorial" & vbCrLf & "2. Competitive AI" & vbCrLf & "3. Fun AI" & vbCrLf & "4. Player vs Player")
+        Console.WriteLine("1. Tutorial" & vbCrLf & "2. Competitive AI" & vbCrLf & "3. Fun AI" & vbCrLf & "4. Player vs Player" & vbCrLf & "5. Unbeatable AI")
         Dim UserTutorial As String = Console.ReadLine
         Select Case UserTutorial
             Case 1
@@ -36,6 +36,9 @@
             Case 4
                 GameType = "PVP"
                 GamePVP()
+            Case 5
+                GameType = "UnbeatableAI"
+                GameUnbeatableAI()
             Case Else
                 Main()
         End Select
@@ -650,6 +653,9 @@
         If GameType = "FunAI" Then
             FunAIGame()
         End If
+        If GameType = "UnbeatableAI" Then
+            GameUnbeatableAI()
+        End If
     End Sub
 
     Sub ChooseGame()
@@ -684,67 +690,67 @@
         'Trying to develop a minmax feature, but might go the for the 'fun' AI first due to the easier nature.
         Dim MoveUsed As Boolean
         MoveUsed = False
-        If Grid(0) = "O" And Grid(1) = "O" And MoveUsed = False And Grid(2) <> "X" And Grid(1) <> "X" And Grid(2) <> "Y" Then
+        If Grid(0) = "O" And Grid(1) = "O" And MoveUsed = False And Grid(2) <> "X" And Grid(1) <> "X" And Grid(2) <> "O" Then
             Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(8) <> "X" And Grid(4) <> "X" And Grid(8) <> "Y" Then
+        If Grid(0) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(8) <> "X" And Grid(4) <> "X" And Grid(8) <> "O" Then
             Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(7) <> "X" And Grid(4) <> "X" And Grid(7) <> "Y" Then
+        If Grid(1) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(7) <> "X" And Grid(4) <> "X" And Grid(7) <> "O" Then
             Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(5) <> "X" And Grid(4) <> "X" And Grid(5) <> "Y" Then
+        If Grid(3) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(5) <> "X" And Grid(4) <> "X" And Grid(5) <> "O" Then
             Grid(5) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(3) <> "X" And Grid(5) <> "X" And Grid(3) <> "Y" Then
+        If Grid(4) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(3) <> "X" And Grid(5) <> "X" And Grid(3) <> "O" Then
             Grid(3) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(6) <> "X" And Grid(4) <> "X" And Grid(6) <> "Y" Then
+        If Grid(2) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(6) <> "X" And Grid(4) <> "X" And Grid(6) <> "O" Then
             Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(4) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(0) <> "X" And Grid(8) <> "X" And Grid(0) <> "Y" Then
+        If Grid(4) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(0) <> "X" And Grid(8) <> "X" And Grid(0) <> "O" Then
             Grid(0) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "X" And Grid(4) <> "Y" Then
+        If Grid(6) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "X" And Grid(4) <> "O" Then
             Grid(2) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(8) <> "X" And Grid(7) <> "X" And Grid(8) <> "Y" Then
+        If Grid(6) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(8) <> "X" And Grid(7) <> "X" And Grid(8) <> "O" Then
             Grid(8) = "O"
             MoveUsed = True
         End If
-        If Grid(7) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(6) <> "X" And Grid(8) <> "X" And Grid(6) <> "Y" Then
+        If Grid(7) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(6) <> "X" And Grid(8) <> "X" And Grid(6) <> "O" Then
             Grid(6) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "O" And Grid(2) = "O" And MoveUsed = False And Grid(1) <> "X" And Grid(2) <> "X" And Grid(1) <> "Y" Then
+        If Grid(0) = "O" And Grid(2) = "O" And MoveUsed = False And Grid(1) <> "X" And Grid(2) <> "X" And Grid(1) <> "O" Then
             Grid(1) = "O"
             MoveUsed = True
         End If
-        If Grid(1) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(7) <> "X" And Grid(4) <> "Y" Then
+        If Grid(1) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(7) <> "X" And Grid(4) <> "O" Then
             Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(3) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(5) <> "X" And Grid(4) <> "Y" Then
+        If Grid(3) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(5) <> "X" And Grid(4) <> "O" Then
             Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(6) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(7) <> "X" And Grid(8) <> "X" And Grid(7) <> "Y" Then
+        If Grid(6) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(7) <> "X" And Grid(8) <> "X" And Grid(7) <> "O" Then
             Grid(7) = "O"
             MoveUsed = True
         End If
-        If Grid(0) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(8) <> "X" And Grid(4) <> "Y" Then
+        If Grid(0) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(8) <> "X" And Grid(4) <> "O" Then
             Grid(4) = "O"
             MoveUsed = True
         End If
-        If Grid(2) = "O" And Grid(6) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(6) <> "X" And Grid(4) <> "Y" Then
+        If Grid(2) = "O" And Grid(6) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(6) <> "X" And Grid(4) <> "O" Then
             Grid(4) = "O"
             MoveUsed = True
         End If
@@ -812,6 +818,351 @@
         End If
         If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
             Grid(4) = "O"
+            MoveUsed = True
+        End If
+        'End of blocking moves, beginning of win setups
+
+        If Grid(0) = "O" And Grid(2) <> "X" And Grid(1) <> "X" And MoveUsed = False And Grid(2) <> "O" And Grid(1) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "O" And Grid(3) <> "X" And Grid(6) <> "X" And MoveUsed = False And Grid(3) <> "O" And Grid(6) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "O" And Grid(4) <> "X" And Grid(8) <> "X" And MoveUsed = False And Grid(4) <> "O" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "O" And Grid(5) <> "X" And Grid(8) <> "X" And MoveUsed = False And Grid(5) <> "O" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "O" And Grid(4) <> "X" And Grid(6) <> "X" And MoveUsed = False And Grid(6) <> "O" And Grid(4) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "O" And Grid(1) <> "X" And Grid(0) <> "X" And MoveUsed = False And Grid(0) <> "O" And Grid(1) <> "O" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(8) = "O" And Grid(6) <> "X" And Grid(7) <> "X" And MoveUsed = False And Grid(6) <> "O" And Grid(7) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(8) = "O" And Grid(4) <> "X" And Grid(0) <> "X" And MoveUsed = False And Grid(4) <> "O" And Grid(0) <> "O" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(8) = "O" And Grid(2) <> "X" And Grid(5) <> "X" And MoveUsed = False And Grid(2) <> "O" And Grid(5) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "O" And Grid(0) <> "X" And Grid(3) <> "X" And MoveUsed = False And Grid(0) <> "O" And Grid(3) <> "O" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "O" And Grid(2) <> "X" And Grid(4) <> "X" And MoveUsed = False And Grid(2) <> "O" And Grid(4) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "O" And Grid(7) <> "X" And Grid(8) <> "X" And MoveUsed = False And Grid(7) <> "O" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "O" And Grid(7) <> "X" And Grid(4) <> "X" And MoveUsed = False And Grid(7) <> "O" And Grid(4) <> "O" Then
+            Grid(7) = "O"
+            MoveUsed = True
+        End If
+        If Grid(5) = "O" And Grid(4) <> "X" And Grid(3) <> "X" And MoveUsed = False And Grid(3) <> "O" And Grid(4) <> "O" Then
+            Grid(3) = "O"
+            MoveUsed = True
+        End If
+        If Grid(7) = "O" And Grid(1) <> "X" And Grid(4) <> "X" And MoveUsed = False And Grid(4) <> "O" And Grid(1) <> "O" Then
+            Grid(1) = "O"
+            MoveUsed = True
+        End If
+        If Grid(3) = "O" And Grid(5) <> "X" And Grid(4) <> "X" And MoveUsed = False And Grid(5) <> "O" And Grid(4) <> "O" Then
+            Grid(5) = "O"
+            MoveUsed = True
+        End If
+        If MoveUsed = False Then
+            Dim RandomNumberBool As Boolean = True
+            Dim Random As New Random
+            Dim RandomNumber As Integer
+            While RandomNumberBool = True
+                RandomNumber = Random.Next(0, 9)
+                If Grid(RandomNumber) = "O" Or Grid(RandomNumber) = "X" Then
+                    RandomNumberBool = True
+                Else
+                    Grid(RandomNumber) = "O"
+                    RandomNumberBool = False
+                    MoveUsed = True
+                End If
+            End While
+        End If
+    End Sub
+    Sub GameUnbeatableAI()
+        Dim xWins As Integer = 0
+        Dim yWins As Integer = 0
+        Dim RoundsPlayed As Integer = 1
+        BestOf()
+        Console.Clear()
+        For RoundsPlayed = 1 To Rounds
+            Grid(0) = "0"
+            Grid(1) = "1"
+            Grid(2) = "2"
+            Grid(3) = "3"
+            Grid(4) = "4"
+            Grid(5) = "5"
+            Grid(6) = "6"
+            Grid(7) = "7"
+            Grid(8) = "8"
+            yWinner = False
+            xWinner = False
+            Console.Clear()
+            Dim Turns As Integer = 0
+            Dim Players(1)
+            Console.WriteLine("In AI mode, you get to choose who goes first.")
+            Console.WriteLine("X = you, O = AI")
+            Dim FirstTurn As String
+            FirstTurn = Console.ReadLine()
+            Dim FirstTurnError As Boolean = True
+            While FirstTurnError = True
+                If FirstTurn = "X" Then
+                    FirstTurnError = False
+                    Players(0) = "X"
+                    Players(1) = "O"
+                    Exit While
+                End If
+                If FirstTurn = "O" Then
+                    FirstTurnError = False
+                    Players(0) = "O"
+                    Players(1) = "X"
+                    Exit While
+                End If
+                Console.WriteLine("That is not valid, please enter a new value now.")
+                FirstTurn = Console.ReadLine
+            End While
+            Console.Clear()
+            If Players(0) = "X" Then
+                Console.WriteLine("The player has the first turn.")
+            Else
+                Console.WriteLine("The AI has the first turn.")
+            End If
+            Console.ReadLine()
+            For i = 1 To 9
+                Console.Clear()
+                DrawBoard()
+                CheckWinX()
+                CheckWinY()
+                If xWinner = True Then
+                    Continue For
+                End If
+                If yWinner = True Then
+                    Continue For
+                End If
+                Console.WriteLine("It is now turn: {0}", Turns)
+                Turns = Turns + 1
+                If i Mod 2 = 1 Then
+                    If Players(0) = "X" Then
+                        Console.WriteLine("It is your turn player.")
+                        Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                        xInputValid()
+                    Else
+                        UnbeatableAI()
+                    End If
+                End If
+
+                If i Mod 2 = 0 Then
+                    If Players(1) = "X" Then
+                        Console.WriteLine("It is your turn player.")
+                        Console.WriteLine("This is the board as it stands, please enter a grid number now. (0-8)")
+                        xInputValid()
+                    Else
+                        UnbeatableAI()
+                    End If
+                End If
+
+                CheckWinX()
+                CheckWinY()
+            Next
+            Console.Clear()
+            DrawBoard()
+            If xWinner = True Then
+                Console.WriteLine("The player won the round!")
+                xWins = xWins + 1
+            End If
+            If yWinner = True Then
+                Console.WriteLine("The AI won the round!")
+                yWins = yWins + 1
+            End If
+            If yWinner = False And xWinner = False Then
+                Console.WriteLine("The round ended in a draw!")
+            End If
+            If RoundsPlayed < Rounds Then
+                Console.WriteLine("Press enter to begin the next round.")
+            End If
+            Console.ReadLine()
+        Next
+        Console.Clear()
+        If xWins > yWins Then
+            Console.WriteLine("Congratulations! You won the game!")
+        End If
+        If yWins > xWins Then
+            Console.WriteLine("Oh no, you lost.")
+        End If
+        If xWins = yWins Then
+            Console.WriteLine("The game has ended as a draw!")
+        End If
+        Console.ReadLine()
+        EndGame()
+    End Sub
+    Sub UnbeatableAI()
+        Dim MoveUsed As Boolean
+        MoveUsed = False
+        'First Turn Move to guarantee that it's unbeatable
+        If Grid(4) = "X" And Grid(0) <> "O" And MoveUsed = False And Grid(0) <> "X" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(4) <> "X" And Grid(4) <> "O" And MoveUsed = False Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        'End of first turn move
+        If Grid(0) = "O" And Grid(1) = "O" And MoveUsed = False And Grid(2) <> "X" And Grid(1) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(8) <> "X" And Grid(4) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(7) <> "X" And Grid(4) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
+            MoveUsed = True
+        End If
+        If Grid(3) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(5) <> "X" And Grid(4) <> "X" And Grid(5) <> "O" Then
+            Grid(5) = "O"
+            MoveUsed = True
+        End If
+        If Grid(4) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(3) <> "X" And Grid(5) <> "X" And Grid(3) <> "O" Then
+            Grid(3) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(6) <> "X" And Grid(4) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(4) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(0) <> "X" And Grid(8) <> "X" And Grid(0) <> "O" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "O" And Grid(4) = "O" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "X" And Grid(4) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(8) <> "X" And Grid(7) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(7) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(6) <> "X" And Grid(8) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "O" And Grid(2) = "O" And MoveUsed = False And Grid(1) <> "X" And Grid(2) <> "X" And Grid(1) <> "O" Then
+            Grid(1) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "O" And Grid(7) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(7) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(3) = "O" And Grid(5) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(5) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(7) <> "X" And Grid(8) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "O" And Grid(8) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(8) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "O" And Grid(6) = "O" And MoveUsed = False And Grid(4) <> "X" And Grid(6) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        'End of winning moves, begins blocking player win.
+
+        If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
+            MoveUsed = True
+        End If
+        If Grid(3) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(5) <> "X" And Grid(5) <> "O" Then
+            Grid(5) = "O"
+            MoveUsed = True
+        End If
+        If Grid(4) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(3) <> "X" And Grid(3) <> "O" Then
+            Grid(3) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(4) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(0) <> "X" And Grid(0) <> "O" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "X" And Grid(4) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(8) <> "X" And Grid(8) <> "O" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(7) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(6) <> "X" And Grid(6) <> "O" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "X" And Grid(2) = "X" And MoveUsed = False And Grid(1) <> "X" And Grid(1) <> "O" Then
+            Grid(1) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(3) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(6) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(7) <> "X" And Grid(7) <> "O" Then
+            Grid(7) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) <> "X" And Grid(4) <> "O" Then
+            Grid(4) = "O"
+            MoveUsed = True
+        End If
+        If Grid(4) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(1) <> "X" And Grid(1) <> "O" Then
+            Grid(1) = "O"
             MoveUsed = True
         End If
         'End of blocking moves, beginning of win setups
