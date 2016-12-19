@@ -145,9 +145,11 @@
             CheckWinY()
             If xWinner = True Then
                 Console.WriteLine("Congratulations X! You won the round!")
+                xWins = xWins + 1
             End If
             If yWinner = True Then
                 Console.WriteLine("Congratulations O! You won the round!")
+                yWins = yWins + 1
             End If
 
             If xWinner = False And yWinner = False Then
@@ -157,10 +159,10 @@
         Next
         Console.Clear()
         If xWins > yWins Then
-            Console.WriteLine("Congratulations! You won the game!")
+            Console.WriteLine("Congratulations! X won the game!")
         End If
         If yWins > xWins Then
-            Console.WriteLine("Oh no, you lost.")
+            Console.WriteLine("Congratulations! Y won the game!")
         End If
         If xWins = yWins Then
             Console.WriteLine("The game has ended as a draw!")
