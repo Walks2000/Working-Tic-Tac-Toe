@@ -1098,7 +1098,6 @@
             MoveUsed = True
         End If
         'End of winning moves, begins blocking player win.
-
         If Grid(0) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(2) <> "X" And Grid(2) <> "O" Then
             Grid(2) = "O"
             MoveUsed = True
@@ -1167,8 +1166,93 @@
             Grid(1) = "O"
             MoveUsed = True
         End If
+        If Grid(0) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(3) = "3" Then
+            Grid(3) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(5) = "5" Then
+            Grid(5) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "X" And Grid(2) = "X" And MoveUsed = False And Grid(0) = "0" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(3) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(0) = "0" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "X" And Grid(3) = "X" And MoveUsed = False And Grid(6) = "6" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(8) = "8" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(5) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(2) = "2" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
         'End of blocking moves, beginning of win setups
-
+        'Test block
+        If Grid(0) = "X" And Grid(8) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(1) = "1" Then
+            Grid(1) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(1) = "1" Then
+            Grid(1) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(2) = "2" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(0) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(6) = "6" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(3) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(0) = "0" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(2) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(8) = "8" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(0) = "0" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(5) = "X" And Grid(6) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(8) = "8" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(8) = "X" And Grid(3) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(6) = "6" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        If Grid(8) = "X" And Grid(1) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(2) = "2" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "X" And Grid(3) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(0) = "0" Then
+            Grid(0) = "O"
+            MoveUsed = True
+        End If
+        If Grid(1) = "X" And Grid(5) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(2) = "2" Then
+            Grid(2) = "O"
+            MoveUsed = True
+        End If
+        If Grid(5) = "X" And Grid(7) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(8) = "8" Then
+            Grid(8) = "O"
+            MoveUsed = True
+        End If
+        If Grid(7) = "X" And Grid(3) = "X" And MoveUsed = False And Grid(4) = "O" And Grid(6) = "6" Then
+            Grid(6) = "O"
+            MoveUsed = True
+        End If
+        'end of test blocks
         If Grid(0) = "O" And Grid(2) <> "X" And Grid(1) <> "X" And MoveUsed = False And Grid(2) <> "O" And Grid(1) <> "O" Then
             Grid(2) = "O"
             MoveUsed = True
